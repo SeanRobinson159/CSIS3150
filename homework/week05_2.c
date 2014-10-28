@@ -1,4 +1,5 @@
-// Images
+// Add code  to the testppm that automatically saves the image 
+// data to a file with a ppm extension.
 
 #include <stdio.h>
 #include <math.h>

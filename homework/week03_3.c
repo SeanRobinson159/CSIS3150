@@ -7,16 +7,13 @@
 #include <stdlib.h>
 
 int main () {
-	double memory;
+	int memory;
 	int *memoryArea;
 	while(2==2){
-	
-	//I don't think I am doing this right....
-		memoryArea = (int *)malloc(2000);
-		*memoryArea = 2342;
-		//memory +=0.002;
-		//if(memory / 1000.0 == 0.0){
-		//	printf("Memory: %f MB\n", memory/1000);
-		//}
+		printf("Memory: %d KB\n", memory);
+		memoryArea = malloc(2000);
+		*memoryArea = 1000;
+		memory +=2;
+			
 	}
 }
