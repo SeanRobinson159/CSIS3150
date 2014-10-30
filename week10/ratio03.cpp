@@ -13,6 +13,7 @@ class Ratio {
         double convert();
   		void invert();
   		void print();
+        void gcd(int m, int n);
   	private:
   		int num;
   		int den;
@@ -37,6 +38,18 @@ Ratio::Ratio(int n, int d){
      	return double(num)/den; 
     }
 
+    int Ratio::getNum(){
+        return num;
+    }
+    int Ratio::getDen(){
+        return den;
+    }
+    int Ratio::setNum(int n){
+        num = n;
+    }
+    int Ratio::setDen(int d){
+        den = d;
+    }
 	void Ratio::invert(){
      	int temp = num;
       	num = den;
@@ -46,4 +59,15 @@ Ratio::Ratio(int n, int d){
 	void Ratio::print(){
  		cout << num << '/' << den; 
 	}
+
+    void Ratio::gcd(int m, int n){
+        int r;
+        if(m<n) swap (m,n);
+        while (n>0){
+            r = m%n;
+            m = n;
+            n = r;
+        }
+        return m;
+    }
   
