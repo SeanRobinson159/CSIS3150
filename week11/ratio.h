@@ -1,9 +1,14 @@
-// A Ratio class 4
+// Ratio Header file (New)!
 
 #include <iostream>
 using namespace std;
 
+int gcd(int m, int n);
+
 class Ratio {
+    friend Ratio operator*(Ratio & x, Ratio & y);   //Non-class function
+    friend Ratio operator+(Ratio & x, Ratio & y);   //Non-class function
+
 public:
     Ratio(int n, int d);
     int getNum();
@@ -13,29 +18,22 @@ public:
     double convert();
     void invert();
     void print();
-    int gcd(int m, int n);
     void reduce();
 private:
   		int num;
   		int den;
 };
 
-int main() {
-    Ratio x(22,7);
-    cout << "x = ";
-    x.print();
-    cout << " = " << x.convert() << endl;
-    x.invert();
-    cout << "1/x = "; x.print();
-    cout << endl;
-    int g = x.gcd(1111, 2222);
-    cout << g << endl;
-    x.setNum(1111);
-    x.setDen(2222);
-    cout << x.getNum() << endl;
-    cout << x.getDen() << endl;
-    x.reduce();
-    x.print();
+Ratio operator*(Ratio & x, Ratio & y){      //Overloading operators
+    Ratio z(x.num*y.num, x.den* y.den);
+    z.reduce();
+    return z;
+}
+
+Ratio operator+(Ratio & x, Ratio & y){      //Overloading operators
+    Ratio z(x.num*y.den + y.num*x.den, x.den*y.den);
+    z.reduce();
+    return z;
 }
 
 Ratio::Ratio(int n, int d){
@@ -66,18 +64,7 @@ void Ratio::invert(){
 }
 
 void Ratio::print(){
-    cout << num << '/' << den;
-}
-
-int Ratio::gcd(int m, int n){
-    int r;
-    if (m<n) swap (m,n);
-    while (n>0){
-        r = m%n;
-        m = n;
-        n = r;
-    }
-    return m;
+    cout << num << '/' << den << endl;
 }
 
 void Ratio::reduce(){
@@ -97,4 +84,15 @@ void Ratio::reduce(){
     num = num/g;
     den = den/g;
     
+}
+
+int gcd(int m, int n){
+    int r;
+    if (m<n) swap (m,n);
+    while (n>0){
+        r = m%n;
+        m = n;
+        n = r;
+    }
+    return m;
 }

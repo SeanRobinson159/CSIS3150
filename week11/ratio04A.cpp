@@ -1,7 +1,9 @@
-// A Ratio class 4
+// A Ratio class 4A
 
 #include <iostream>
 using namespace std;
+
+int gcd(int m, int n);
 
 class Ratio {
 public:
@@ -13,7 +15,6 @@ public:
     double convert();
     void invert();
     void print();
-    int gcd(int m, int n);
     void reduce();
 private:
   		int num;
@@ -28,7 +29,7 @@ int main() {
     x.invert();
     cout << "1/x = "; x.print();
     cout << endl;
-    int g = x.gcd(1111, 2222);
+    int g = gcd(1111, 2222);
     cout << g << endl;
     x.setNum(1111);
     x.setDen(2222);
@@ -36,6 +37,8 @@ int main() {
     cout << x.getDen() << endl;
     x.reduce();
     x.print();
+    cout << endl;
+    cout << "Testing non-member form of gcd: " << gcd(1234,5678) << endl;
 }
 
 Ratio::Ratio(int n, int d){
@@ -69,17 +72,6 @@ void Ratio::print(){
     cout << num << '/' << den;
 }
 
-int Ratio::gcd(int m, int n){
-    int r;
-    if (m<n) swap (m,n);
-    while (n>0){
-        r = m%n;
-        m = n;
-        n = r;
-    }
-    return m;
-}
-
 void Ratio::reduce(){
     int sign, g;
     if (num == 0 || den == 0){
@@ -97,4 +89,15 @@ void Ratio::reduce(){
     num = num/g;
     den = den/g;
     
+}
+
+int gcd(int m, int n){
+    int r;
+    if (m<n) swap (m,n);
+    while (n>0){
+        r = m%n;
+        m = n;
+        n = r;
+    }
+    return m;
 }
