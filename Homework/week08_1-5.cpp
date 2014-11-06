@@ -12,7 +12,7 @@
 
 using namespace std;
 
-int iterate_pt(double complex c);
+int iterate_pt(complex<double> c);
 
 int Mand[ncols][nrows];
 
@@ -22,15 +22,14 @@ int main() {
     double cimin = -0.138;
     double cimax = -0.127;
     
-    int x, y;
     int color;
-    double complex c;
-    double complex imag = 0.0 + 1.0i;
+    complex<double> imag (0.0,1.0);
+    complex<double> c(0.0,0.0);
     double dx = (crmax - crmin)/ncols;
     double dy = (cimax - cimin)/nrows;
     
-    for(y = 0; y < nrows; y++){
-        for(x = 0; x < ncols; x++){
+    for(int y = 0; y < nrows; y++){
+        for(int x = 0; x < ncols; x++){
             c = (crmin + x*dx) + (cimin + y*dy)*imag;
             Mand[x][y] = iterate_pt(c) + 65;
         }
@@ -39,8 +38,8 @@ int main() {
     //printf("P3\n%d %d\n255\n", ncols, nrows);
     cout << "P3\n" << ncols << " " << nrows << "\n255" << endl;
     
-    for(y = 0; y < nrows; y++){
-        for(x = 0; x < ncols; x++){
+    for(int y = 0; y < nrows; y++){
+        for(int x = 0; x < ncols; x++){
             color = Mand[x][y];
             //printf("%d\n%d\n%d\n", color*4, color*3, color*2);
             cout << color << endl << color << endl << color << endl;
@@ -48,13 +47,14 @@ int main() {
     }
 }
 
-int iterate_pt(double complex c) {
-    double complex z = 0.0 + 0.0i;
+int iterate_pt(complex<double> c) {
+    complex<double> z (0.0,0.0);
     int iterations = 0;
-    int k;
-    for (k = 1; k <= (255-64); k++){
+    for (int k = 1; k <= (255-64); k++){
         z = z*z + c;
-        if(sqrt(z*conj(z)) > 50){
+        complex<double> a (50.0, 0.0);
+        complex<double> b = sqrt(z*conj(z));
+        if(a.real() > b.real()){
             break;
         } else {
             ++iterations;
