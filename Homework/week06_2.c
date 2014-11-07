@@ -18,15 +18,15 @@ int main() {
 	double cimin = -0.138;
 	double cimax = -0.127;
     FILE *fp;
-    fp = fopen("mand2.ppm","w+");
+    fp = fopen("mand12.ppm","w+");
     printf("Creating mand2.ppm.....\n");
 	
 	int x, y;
 	int color;
 	double complex c;
 	double complex imag = 0.0 + 1.0i;
-	double dx = (crmax - crmin)/ncols;
-	double dy = (cimax - cimin)/nrows;
+	double dx = .3*(crmax - crmin)/ncols;   //The multiplicaiton before is the zoom!
+	double dy = .3*(cimax - cimin)/nrows;
 
 	for(y = 0; y < nrows; y++){
 		for(x = 0; x < ncols; x++){
