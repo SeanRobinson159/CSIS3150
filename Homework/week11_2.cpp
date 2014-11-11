@@ -13,15 +13,15 @@ class Ratio {
     friend Ratio operator/(Ratio & x, Ratio & y);   //Non-class function
     friend Ratio operator+(Ratio & x, Ratio & y);   //Non-class function
     friend Ratio operator-(Ratio & x, Ratio & y);   //Non-class function
-    friend Ratio operator<(Ratio & x, Ratio & y);   //Non-class function
-    friend Ratio operator>(Ratio & x, Ratio & y);   //Non-class function
+    friend bool operator<(Ratio & x, Ratio & y);   //Non-class function
+    friend bool operator>(Ratio & x, Ratio & y);   //Non-class function
 
 public:
     Ratio(int n, int d);
     int getNum();
     int getDen();
-    int setNum(int n);
-    int setDen(int d);
+    void setNum(int n);
+    void setDen(int d);
     double convert();
     void invert();
     void print();
@@ -51,15 +51,17 @@ Ratio operator-(Ratio & x, Ratio & y){      //Overloading operators
     z.reduce();
     return z;
 }
-Ratio operator<(Ratio & x, Ratio & y){      //Overloading operators
+bool operator<(Ratio & x, Ratio & y){      //Overloading operators
     if((x.num/x.den) < (y.num/y.den)){
-    	return x;
+    	return 1;
     }
+    return 0;
 }
-Ratio operator>(Ratio & x, Ratio & y){      //Overloading operators
+bool operator>(Ratio & x, Ratio & y){      //Overloading operators
     if(x.num/x.den > y.num/y.den){
-    	return x;
+    	return 1;
     }
+    return 0;
 }
 
 int main(){
@@ -67,28 +69,16 @@ int main(){
 	Ratio R2(1,2);
 	Ratio rSub = R1-R2;
 	Ratio rDiv = R1/R2;
-	Ratio less = R1<R2;
-	Ratio more = R1>R2;
+	bool less = R1<R2;
+	bool more = R1>R2;
 	cout << "R1: ";
 	R1.print();
 	cout << "R2: ";
 	R2.print();
 
-	cout << "R1 < R2 ? ";
-	if(less.getNum() == R1.getNum()){
-		cout << "R1 is Less than R2" << endl;
-	}
-	else {
-		cout << "FALSE" << endl;
-	}
+	cout << "R1 < R2 ? " << less << endl;
 
-	cout << "R1 > R2 ? ";
-	if(more.getNum() == R1.getNum()){
-		cout << "R1 is More than R2" << endl;
-	}
-	else {
-		cout << "FALSE" << endl;
-	}
+	cout << "R1 > R2 ? " << more << endl;
 
 }
 
@@ -107,10 +97,10 @@ int Ratio::getNum(){
 int Ratio::getDen(){
     return den;
 }
-int Ratio::setNum(int n){
+void Ratio::setNum(int n){
     num = n;
 }
-int Ratio::setDen(int d){
+void Ratio::setDen(int d){
     den = d;
 }
 void Ratio::invert(){
