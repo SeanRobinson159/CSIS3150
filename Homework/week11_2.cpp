@@ -52,13 +52,14 @@ Ratio operator-(Ratio & x, Ratio & y){      //Overloading operators
     return z;
 }
 bool operator<(Ratio & x, Ratio & y){      //Overloading operators
-    if((x.num/x.den) < (y.num/y.den)){
+    
+    if((double(x.getNum())/double(x.getDen())) < (double(y.getNum())/double(y.getDen()))){
     	return 1;
     }
     return 0;
 }
 bool operator>(Ratio & x, Ratio & y){      //Overloading operators
-    if(x.num/x.den > y.num/y.den){
+    if((double(x.getNum())/double(x.getDen())) > (double(y.getNum())/double(y.getDen()))){
     	return 1;
     }
     return 0;
@@ -69,15 +70,14 @@ int main(){
 	Ratio R2(1,2);
 	Ratio rSub = R1-R2;
 	Ratio rDiv = R1/R2;
-	bool less = R1<R2;
-	bool more = R1>R2;
+	bool less = R1 < R2;
+	bool more = R1 > R2;
 	cout << "R1: ";
 	R1.print();
 	cout << "R2: ";
 	R2.print();
 
 	cout << "R1 < R2 ? " << less << endl;
-
 	cout << "R1 > R2 ? " << more << endl;
 
 }
