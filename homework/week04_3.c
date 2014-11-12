@@ -5,27 +5,23 @@
 #include <string.h>
 
 struct Student {
-	char firstName;
-	char lastName;
-	char major;
-	char email;
+	char *firstName;
+	char *lastName;
+	char *major;
+	char *email;
 };
 
 int main () {
 	struct Student s;
-	//s.firstName = "Sean";
-	//s.lastName = "Robinson";
+    s.firstName = "Sean";
+    s.lastName = "Robinson";
+    s.major = "Computer Science";
+    s.email = "SeanRobinson159@gmail.com";
+	
+    printf("First Name: %s\n",s.firstName);
+    printf("Last Name: %s\n",s.lastName);
+    printf("Major: %s\n",s.major);
+    printf("email: %s\n",s.email);
 
-	//printf("%s", s.firstName);
-	
-	printf("Please enter your firstName: ");
-	scanf("%s", &s.firstName);
-	printf("\nPlease enter your lastName: ");
-	scanf("%s", &s.lastName);
-	printf("\nPlease enter your major: ");
-	scanf("%s", &s.major);
-	printf("\nPlease enter your email: ");
-	scanf("%s", &s.email);
-	
 	
 }

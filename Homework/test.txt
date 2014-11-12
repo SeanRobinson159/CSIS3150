@@ -1,0 +1,4 @@
+Hello! My name is Sean Robinson. 
+This is a word count macro!
+It should be pretty cool!
+I wonder	if	it	can	count	tabs!

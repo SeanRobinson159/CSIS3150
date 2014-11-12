@@ -1,23 +1,28 @@
 // Write a word count macro
 
 #include <stdio.h>
+#define IN 1
+#define OUT 0
+
 
 int main () {
 	int chars = 0, lines = 0, words = 0;
-	int n, boolean;
+	int n, state;
 	
 	while ((n = getchar()) != EOF){
 		chars++;
-		if(n==' ' || !e(getchar())){
-			words++;
-		} if ( n=='\n'){
-			lines++;
-		} if (n=='-'){
-			words--;
-		}
+        if ( n=='\n'){
+            lines++;
+        }
+		if(n==' ' || n== '\n' || n == '\t'){
+            state = OUT;
+		} else if (state == OUT) {
+            state = IN;
+            words++;
+        }
 	}
 	
 	printf("Lines\tWords\tCharacters\n");
-	printf("%d\t%d\t%d\t", lines, words, chars);
+	printf("%d\t%d\t%d\t\n", lines, words, chars);
 	
 }
