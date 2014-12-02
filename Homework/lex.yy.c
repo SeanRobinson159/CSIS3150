@@ -379,13 +379,13 @@ static yyconst flex_int16_t yy_accept[8] =
 
 static yyconst flex_int32_t yy_ec[256] =
     {   0,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    2,
+        1,    1,    1,    1,    1,    1,    1,    1,    2,    3,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    3,    1,
-        1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    1,    1,    1,    3,
-        1,    3,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    2,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -411,7 +411,7 @@ static yyconst flex_int32_t yy_ec[256] =
 
 static yyconst flex_int32_t yy_meta[4] =
     {   0,
-        1,    2,    2
+        1,    2,    1
     } ;
 
 static yyconst flex_int16_t yy_base[9] =
@@ -426,7 +426,7 @@ static yyconst flex_int16_t yy_def[9] =
 
 static yyconst flex_int16_t yy_nxt[10] =
     {   0,
-        4,    5,    5,    6,    7,    3,    7,    7,    7
+        4,    5,    4,    6,    7,    3,    7,    7,    7
     } ;
 
 static yyconst flex_int16_t yy_chk[10] =
@@ -448,8 +448,8 @@ int yy_flex_debug = 0;
 #define YY_MORE_ADJ 0
 #define YY_RESTORE_YY_MORE_OFFSET
 char *yytext;
-#line 1 "week06_4.l"
-#line 3 "week06_4.l"
+#line 1 "week06_3.l"
+#line 3 "week06_3.l"
 	#include <stdio.h>
 	FILE *fp;
 #line 456 "lex.yy.c"
@@ -634,7 +634,7 @@ YY_DECL
 	register char *yy_cp, *yy_bp;
 	register int yy_act;
     
-#line 6 "week06_4.l"
+#line 6 "week06_3.l"
 
 #line 640 "lex.yy.c"
 
@@ -720,22 +720,23 @@ do_action:	/* This label is used only to access EOF actions. */
 			goto yy_find_action;
 
 case 1:
+/* rule 1 can match eol */
 YY_RULE_SETUP
-#line 7 "week06_4.l"
-{fprintf(fp,"%s\n",yytext);};
+#line 7 "week06_3.l"
+{fprintf(fp,"%s ",yytext);}
 	YY_BREAK
 case 2:
 /* rule 2 can match eol */
 YY_RULE_SETUP
-#line 8 "week06_4.l"
+#line 8 "week06_3.l"
 ;
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 9 "week06_4.l"
+#line 9 "week06_3.l"
 ECHO;
 	YY_BREAK
-#line 739 "lex.yy.c"
+#line 740 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1732,10 +1733,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 9 "week06_4.l"
+#line 9 "week06_3.l"
 
 
-main(){
-	fp=fopen("strippedHTML.txt", "w+");
+int main(){
+	fp=fopen("simpleAWMT.txt", "w+");
 	yylex();
 }
